@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const conexion = async () => {
   try {
     // Intentamos conectar a la base de datos usando la URL almacenada en las variables de entorno
-    await mongoose.connect(`${process.env.MONGO_URL}`);
+    await mongoose.connect(`${process.env.MONGO_URI}`);
     console.log("conectado"); // Si la conexión es exitosa, mostramos un mensaje en consola
   } catch (error) {
     // Si ocurre un error durante la conexión, lo capturamos y mostramos en consola
