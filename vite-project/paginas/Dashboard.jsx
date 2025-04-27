@@ -7,6 +7,7 @@ import EnProceso from "../src/componentes/Dashboard/EnProceso";
 import Completadas from "../src/componentes/Dashboard/Completadas";
 import axios from "axios";
 import EditarTarea from "../src/componentes/Dashboard/EditarTarea";
+import MyComponent from "../src/componentes/Dashboard/MyComponent";
 
 const Dashboard = () => {
   // Estados para manejar la visibilidad de las divisiones de añadir y editar tarea
@@ -86,6 +87,11 @@ const Dashboard = () => {
             />
           </div>
         </div>
+      </div>
+
+      <div className="w-full mt-8">
+        <Titulo title="Nuevo Componente" />
+        <MyComponent />
       </div>
 
       {/* Fondo negro para añadir tarea (cuando se muestra el formulario) */}
