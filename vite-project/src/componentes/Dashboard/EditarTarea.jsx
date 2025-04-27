@@ -44,7 +44,7 @@ const EditarTarea = ({ setEditarTareasDiv, tareaActual, recargarTareas }) => {
     if (window.confirm("¿Estás seguro de que quieres borrar esta tarea?")) {
       try {
         const respuesta = await axios.delete(
-          `"https://flowlist-app-main-1.onrender.com/api/v1/eliminarTarea/"${Valor._id}`,
+          `http://localhost:4000/api/v1/eliminarTarea/${Valor._id}`,
           { withCredentials: true }
         );
 
