@@ -11,7 +11,7 @@ const Header = ({ setAñadirTareaDiv }) => {
     try {
       // Enviamos la solicitud POST al servidor para cerrar sesión
       const respuesta = await axios.post(
-        "http://localhost:4000/api/v1/logout",
+        "https://flowlist-app-main-1.onrender.com/api/v1/logout",
         {},
         { withCredentials: true }
       );

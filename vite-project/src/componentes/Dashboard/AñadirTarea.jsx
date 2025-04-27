@@ -22,7 +22,7 @@ const AñadirTarea = ({ setAñadirTareaDiv, recargarTareas }) => {
     try {
       // Realizamos una petición POST al backend para añadir la tarea
       const respuesta = await axios.post(
-        "http://localhost:4000/api/v1/anadirTarea", // Endpoint de la API
+        "https://flowlist-app-main-1.onrender.com/api/v1/anadirTarea", // Endpoint de la API
         Valor, // Enviamos los datos de la tarea (título, descripción, prioridad, estado)
         { withCredentials: true } // Enviamos las cookies de la sesión
       );

@@ -30,7 +30,8 @@ const Dashboard = () => {
   const fetDetallesUsuario = async () => {
     try {
       const respuesta = await axios.get(
-        "http://localhost:4000/api/v1/detallesUsuario",
+        "https://flowlist-app-main-1.onrender.com/api/v1/detallesUsuario",
+        {},
         { withCredentials: true } // Aseguramos que se envíen las cookies de sesión
       );
       // Asignamos las tareas a sus respectivos estados
