@@ -1,41 +1,34 @@
 import React, { useEffect } from "react";
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom"; // Importación de componentes y hooks de React Router
-import Registro from "../paginas/Registro"; // Componente de registro
-import "./App.css"; // Estilos para la aplicación
-import Login from "../paginas/Login"; // Componente de login
-import Dashboard from "../paginas/Dashboard"; // Componente de dashboard
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import Registro from "../paginas/Registro";
+import "./App.css";
+import Login from "../paginas/Login";
+import Dashboard from "../paginas/Dashboard";
 
 const App = () => {
-  const navigate = useNavigate(); // Hook para navegar entre rutas
+  const navigate = useNavigate();
 
+  // Redirigir según la autenticación
   useEffect(() => {
-    // Si hay un usuario logueado en el localStorage, redirige al dashboard
-    if (localStorage.getItem("userLoggedIn")) {
-      navigate("/dashboard");
+    const userLoggedIn = localStorage.getItem("userLoggedIn");
+
+    if (userLoggedIn === "yes") {
+      navigate("/dashboard"); // Si está logueado, redirige al dashboard
     } else {
-      // Si no hay usuario logueado, redirige al login
-      navigate("/login");
+      navigate("/login"); // Si no está logueado, redirige al login
     }
-  }, []); // Se ejecuta una sola vez cuando el componente se monta
+  }, [navigate]); // Dependemos solo de navigate para evitar redirección infinita
 
   return (
-    <>
-      <div className="animated-bg h-screen w-full">
-        {" "}
-        {/* Fondo con animación que cubre toda la pantalla */}
-        <Routes>
-          {" "}
-          {/* Configuración de rutas */}
-          {/* Rutas de la aplicación */}
-          <Route path="/registro" element={<Registro />} />{" "}
-          {/* Ruta para la página de registro */}
-          <Route path="/login" element={<Login />} />{" "}
-          {/* Ruta para la página de login */}
-          <Route path="/dashboard" element={<Dashboard />} />{" "}
-          {/* Ruta para el dashboard */}
-        </Routes>
-      </div>
-    </>
+    <div className="animated-bg h-screen w-full">
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/registro" element={<Registro />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        {/* Ruta de redirección por defecto */}
+        <Route path="/" element={<Navigate to="/login" />} />
+      </Routes>
+    </div>
   );
 };
 

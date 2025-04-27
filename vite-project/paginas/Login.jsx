@@ -36,14 +36,19 @@ const Login = () => {
         }
       );
 
+      console.log(respuesta.data);
+
       // Si el login es exitoso, almacenamos la información en localStorage
       localStorage.setItem("userLoggedIn", "yes");
 
       // Redirigimos al dashboard
       navigate("/dashboard");
     } catch (error) {
-      // Si hay un error, mostramos el mensaje de error
-      alert(error.response.data.error);
+      if (error.response && error.response.data) {
+        alert(error.response.data.error); // Mostramos el error que viene del servidor
+      } else {
+        alert("Ha ocurrido un error inesperado. Intenta de nuevo."); // Mensaje general si no hay error específico
+      }
     }
   };
 
