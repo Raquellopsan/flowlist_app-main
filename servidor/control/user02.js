@@ -19,12 +19,7 @@ router.post("/login", login);
 router.post("/logout", logout);
 
 // Definimos la ruta para obtener los detalles del usuario, esta ruta requiere autenticación (middleware authMiddleware)
-router.get(
-  "/api/v1/detallesUsuario",
-
-  authMiddleware,
-  detallesUsuario
-);
+router.get("/detallesUsuario", authMiddleware, detallesUsuario);
 
 // Exportamos el enrutador para que pueda ser usado en otros archivos
 module.exports = router;
